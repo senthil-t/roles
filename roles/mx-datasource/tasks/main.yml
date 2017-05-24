@@ -1,0 +1,12 @@
+---
+- name: Upload python module
+  copy: src=ConfigureMXDatasource.py dest=/tmp/ConfigureMXDatasource.py
+  
+- name: configure datasource  
+  configure_datasource: 
+    service_name: "{{service_name}}"    
+    datasource_name: "{{datasource_name}}"    
+    action: "{{action}}"
+  register: result
+
+- debug: var=result 

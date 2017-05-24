@@ -1,0 +1,38 @@
+> CONFIGURE SQL/MX SERVICE AS A PERSISTENCE PROCESS.
+
+  To start or stop persistent SQL/MX MXCS service with the specified service name and port number. Optionally, user can choose to
+  provide the MXOAS guardian location.
+
+Options (= is mandatory):
+
+= action
+        To determine whether to start or stop the service. (Choices: start, stop) [Default: True]
+
+- mxoas_location
+        Guardian location of the MXCS objects. [Default: $system.zmxodbc.mxoas]
+
+= port_number
+        MXCS service will be started with this name.
+
+= service_name
+        MXCS Service will be started with this name. (Choices: enable, disable) [Default: a string or the word null]
+
+Requirements:  Ansible must be installed, NonStop server with proper user credentials
+
+EXAMPLES:
+- name: start MX Service
+  persistence_mxservice:    
+    service_name: "mxsv1"    
+    port_number: "18650"
+    action: "start"
+  register: result
+
+RETURN VALUES:
+dest:
+    description: starts/stops SQL/MX service.
+    returned: success
+    type: string
+    sample: none
+
+
+MAINTAINERS: senthilt

@@ -1,0 +1,14 @@
+---
+- name: Upload python module
+  copy: src=ModifyMXDatasource.py dest=/tmp/ModifyMXDatasource.py
+  
+- name: configure MX datasource
+  alter_datasource:    
+    service_name: "{{service_name}}"      
+    datasource_name: "{{datasource_name}}"
+    max_server: "{{max_server}}"
+    idle_server: "{{idle_server}}"
+    init_server: "{{init_server}}"
+  register: result
+  
+- debug: var=result

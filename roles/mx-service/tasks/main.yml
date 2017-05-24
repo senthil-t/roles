@@ -1,0 +1,12 @@
+---
+- name: Upload python module
+  copy: src=ConfigureMXService.py dest=/tmp/ConfigureMXService.py
+  
+- name: configure mx service  
+  configure_mxservice: 
+    service_name: "{{service_name}}"    
+    port_number: "{{service_port}}"
+    action: "{{action}}"
+  register: result
+
+- debug: var=result 
