@@ -1,4 +1,5 @@
-- hosts: perry
+---
+#- hosts: perry
   roles:
     - mx-service
-    - mx-datasource
+ #   - mx-datasource
