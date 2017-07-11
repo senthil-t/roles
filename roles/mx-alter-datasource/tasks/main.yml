@@ -4,11 +4,11 @@
   
 - name: configure MX datasource
   alter_datasource:    
-    service_name: "{{service_name}}"      
-    datasource_name: "{{datasource_name}}"
-    max_server: "{{max_server}}"
-    idle_server: "{{idle_server}}"
-    init_server: "{{init_server}}"
+    service_name: "{{alter_service_name}}"      
+    datasource_name: "{{alter_datasource_name}}"
+    max_server: "{{alter_maxserver_count}}"
+    idle_server: "{{alter_idleserver_count}}"
+    init_server: "{{alter_initserver_count}}"
   register: result
   
 - debug: var=result

@@ -83,7 +83,7 @@ class MXPersistenceService(object):
     
     def __start_process(self):
         commandList = [
-                    "add #{}, cpu firstof(01,00), AutoRestart 10,hometerm $zhome,name ${},startupmsg \"-pn {} \", StartMode application, program $system.zmxodbc.mxoas\n".format(self.processName,self.serviceName,self.servicePort),                       
+                    "add #{}, cpu firstof(01,00), AutoRestart 10,hometerm $zhome,name ${},startup \"-pn {} \", StartMode application, program $system.zmxodbc.mxoas\n".format(self.processName,self.serviceName,self.servicePort),                       
                     "start #{} \n".format(self.processName),
                     "status #{} \n".format(self.processName)
                ]

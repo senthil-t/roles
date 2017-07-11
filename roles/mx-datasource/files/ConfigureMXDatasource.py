@@ -43,9 +43,10 @@ class ConfigureDatasource(object):
         
         maxserver = self.dsattributes['max_server']
         initserver = self.dsattributes['init_server']
+        idleserver = self.dsattributes['idle_server']
         
         #add server datasource with default configuration.
-        commandList = ["add ds ${}.{}, maxserver {},initserver {},idleserver 2, ConnTimeout NO_TIMEOUT, IdleTimeout NO_TIMEOUT;\n".format(self.serviceName,self.datasourceName,int(maxserver),int(initserver)),                       
+        commandList = ["add ds ${}.{}, maxserver {},initserver {},idleserver {}, ConnTimeout NO_TIMEOUT, IdleTimeout NO_TIMEOUT;\n".format(self.serviceName,self.datasourceName,int(maxserver),int(initserver),int(idleserver)),                       
                        "start ds ${}.{};\n".format(self.serviceName,self.datasourceName)
                        ]
         result = self.__execute_in_mxcs(commandList)
@@ -77,8 +78,7 @@ class ConfigureDatasource(object):
        'result' : 'success',
        'message':'Datasource removed successfully',
        'service Name' : '{}'.format(self.serviceName),
-       'datasource_name' : '{}'.format(self.datasourceName),     
-       'output' : result  
+       'datasource_name' : '{}'.format(self.datasourceName)
         }    
         
         return data
@@ -106,6 +106,7 @@ class ConfigureDatasource(object):
     
         process.stdin.write("exit;\n")
         result =  process.stdout.readlines()
+        return result
 
     def __handle_error(self, errorMsg):
         data = {

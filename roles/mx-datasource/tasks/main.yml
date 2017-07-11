@@ -6,7 +6,10 @@
   configure_datasource: 
     service_name: "{{service_name}}"    
     datasource_name: "{{datasource_name}}"    
-    action: "{{action}}"
+    max_server: "10"
+    idle_server: "5"
+    init_server: "5"
+    action: "{{datasource_action}}"
   register: result
 
 - debug: var=result 
